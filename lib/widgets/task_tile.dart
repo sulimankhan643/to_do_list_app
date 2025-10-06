@@ -29,7 +29,8 @@ class TaskTile extends StatelessWidget {
         ),
         child: const Icon(Icons.delete, color: Colors.white, size: 28),
       ),
-      child: Container(
+      child: AnimatedContainer(
+        duration: const Duration(milliseconds: 400),
         margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(20),
@@ -47,7 +48,8 @@ class TaskTile extends StatelessWidget {
           ],
         ),
         child: ListTile(
-          contentPadding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
+          contentPadding:
+          const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
           leading: GestureDetector(
             onTap: onToggle,
             child: AnimatedContainer(
@@ -67,14 +69,15 @@ class TaskTile extends StatelessWidget {
                   : null,
             ),
           ),
-          title: Text(
-            title,
+          title: AnimatedDefaultTextStyle(
+            duration: const Duration(milliseconds: 300),
             style: TextStyle(
               fontSize: 17,
               fontWeight: FontWeight.w600,
               decoration: isDone ? TextDecoration.lineThrough : null,
               color: isDone ? Colors.grey.shade700 : Colors.black87,
             ),
+            child: Text(title),
           ),
           trailing: IconButton(
             icon: Icon(Icons.delete_outline, color: Colors.red.shade400),
